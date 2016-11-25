@@ -1,6 +1,6 @@
 from ldap3 import Server, Connection, ALL, Tls, MODIFY_REPLACE
 import ssl
-from PyQt5 import QtCore, QtWidgets, QtGui
+from PyQt5 import QtCore, QtWidgets
 
 tls_configuration = Tls(validate=ssl.CERT_REQUIRED, version=ssl.PROTOCOL_TLSv1_2)   # Using TLS in connection.
 
@@ -77,11 +77,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(438, 147))
         MainWindow.setMaximumSize(QtCore.QSize(438, 147))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("AD.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        MainWindow.setWindowIcon(icon)
-
+        self.centralwidget.setObjectName("centralwidget")       
         self.gridLayout_2 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.gridLayout = QtWidgets.QGridLayout()
